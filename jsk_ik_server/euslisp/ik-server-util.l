@@ -226,6 +226,9 @@
 	       ;; :min min-vec
 	       ;; :max max-vec
 	       ;; :stop stop
+               :avoid-nspace-gain 0.0
+               :stop 2
+               :null-space (float-vector 0 0 0 0.01 0 0 0)
 	       :thre (car thre)
 	       :rthre (car rthre)
 	       :translation-axis (car translation-axis)

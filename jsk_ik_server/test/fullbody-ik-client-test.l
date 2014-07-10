@@ -48,9 +48,9 @@
      args)))
   (:hrp2jsknt-test
    (&rest args)
-   (require :hrp2jsknt "package://hrpsys_ros_bridge_tutorials/models/hrp2jsknt.l")
-   (when (probe-file (ros::resolve-ros-path "package://hrpsys_ros_bridge_tutorials/euslisp/hrp2jsknt-utils.l"))
-     (require :hrp2jsknt-utils "package://hrpsys_ros_bridge_tutorials/euslisp/hrp2jsknt-utils.l"))
+   (require :hrp2jsknt "package://hrp2jsknt_description/euslisp/models/hrp2jsknt.l")
+   (when (probe-file (ros::resolve-ros-path "package://hrp2jsknt_description/euslisp/models/hrp2jsknt-utils.l"))
+     (require :hrp2jsknt-utils "package://hrp2jsknt_description/euslisp/models/hrp2jsknt-utils.l"))
    (defvar *robot* (hrp2jsknt))
    (objects (list *robot*))
    (ros::roseus "fullbody_ik_client_test")

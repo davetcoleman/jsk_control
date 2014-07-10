@@ -152,7 +152,8 @@
     ;;
     (initial-av (copy-seq (send robot :angle-vector)))
     (initial-coords (copy-object (send robot :worldcoords)))
-    (debug-view :no-message)
+    (debug-view t)
+    ;;(debug-view :no-message)
     (collision-pair)
     (collision-avoidance-link-pair collision-pair)
     (avoid-collision-distance 10)

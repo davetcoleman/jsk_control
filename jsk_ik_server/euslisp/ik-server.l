@@ -398,15 +398,15 @@
 	 (setq
 	  goal-in-pelvis
 	  (cond
-	   ((and root-link-frame-id
-		 (send ps :header :frame_id)
-		 (send ps :header :stamp)
-		 (setq goal-in-pelvis
-		       (send *tf* :lookup-transform
-			     (send ps :header :frame_id)
-			     root-link-frame-id
-			     (send ps :header :stamp))))
-	    (send tmp :transform goal-in-pelvis))
+	   ;; ((and nil ;; root-link-frame-id
+	   ;; 	 (send ps :header :frame_id)
+	   ;; 	 (send ps :header :stamp)
+	   ;; 	 (setq goal-in-pelvis
+	   ;; 	       (send *tf* :lookup-transform
+	   ;; 		     (send ps :header :frame_id)
+	   ;; 		     root-link-frame-id
+	   ;; 		     (send ps :header :stamp))))
+	   ;;  (send tmp :transform goal-in-pelvis))
 	   (t (send self :local-transform
 		    (send ps :header :frame_id)
 		    (send ps :pose)
@@ -455,11 +455,11 @@
 	     (cadr (read-from-string
 		    (format nil "(~A)" group_name))))))
    (cond
-    ((and
-      (not (substringp ":fullbody-inverse-kinematics" group_name))
-      (not (substringp ":inverse-kinematics" group_name)))
-     (format t "[:fik-service-cb] invalid group ~A~%" group_name)
-     nil)
+    ;; ((and
+    ;;   (not (substringp ":fullbody-inverse-kinematics" group_name))
+    ;;   (not (substringp ":inverse-kinematics" group_name)))
+    ;;  (format t "[:fik-service-cb] invalid group ~A~%" group_name)
+    ;;  nil)
     (t
      (let* ((res (send msg :response))
 	    (req (send msg :ik_request))

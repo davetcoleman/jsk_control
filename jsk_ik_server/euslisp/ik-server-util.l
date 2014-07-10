@@ -179,34 +179,65 @@
      ;;
      (setq
       ret
+      ;; (send* robot
+      ;;        :fullbody-inverse-kinematics;; -with-error
+      ;;        (append
+      ;;         (list
+      ;;          target-coords
+      ;;          :move-target move-target
+      ;;          :link-list link-list
+      ;;          :target-centroid-pos target-centroid-pos
+      ;;          :centroid-thre centroid-thre
+      ;;          ;;
+      ;;          :collision-avoidance-link-pair
+      ;;          collision-avoidance-link-pair
+      ;;          :avoid-collision-distance avoid-collision-distance
+      ;;          :avoid-collision-null-gain avoid-collision-null-gain
+      ;;          :avoid-collision-joint-gain avoid-collision-joint-gain
+      ;;          :min min-vec
+      ;;          :max max-vec
+      ;;          :stop stop
+      ;;          :thre thre
+      ;;          :rthre rthre
+      ;;          :translation-axis translation-axis
+      ;;          :rotation-axis rotation-axis
+      ;;          ;;
+      ;;          :dump-command nil
+      ;;          :debug-view debug-view
+      ;;          ;;:debug-view :no-message
+      ;;          :warnp nil)
+      ;;         args))
       (send* robot
-	     :fullbody-inverse-kinematics;; -with-error
+	     :inverse-kinematics;; -with-error
 	     (append
 	      (list
-	       target-coords
-	       :move-target move-target
-	       :link-list link-list
-	       :target-centroid-pos target-centroid-pos
-	       :centroid-thre centroid-thre
+	       (car target-coords)
+	       :move-target (car move-target)
+	       :link-list (cdr (cdr (car link-list)))
+	       ;; :target-centroid-pos target-centroid-pos
+	       ;; :centroid-thre centroid-thre
 	       ;;
-	       :collision-avoidance-link-pair
-	       collision-avoidance-link-pair
-	       :avoid-collision-distance avoid-collision-distance
-	       :avoid-collision-null-gain avoid-collision-null-gain
-	       :avoid-collision-joint-gain avoid-collision-joint-gain
-	       :min min-vec
-	       :max max-vec
-	       :stop stop
-	       :thre thre
-	       :rthre rthre
-	       :translation-axis translation-axis
-	       :rotation-axis rotation-axis
+	       :collision-avoidance-link-pair nil
+	       ;; :collision-avoidance-link-pair
+	       ;; collision-avoidance-link-pair
+	       ;; :avoid-collision-distance avoid-collision-distance
+	       ;; :avoid-collision-null-gain avoid-collision-null-gain
+	       ;; :avoid-collision-joint-gain avoid-collision-joint-gain ;
+	       ;; :min min-vec
+	       ;; :max max-vec
+	       ;; :stop stop
+	       :thre (car thre)
+	       :rthre (car rthre)
+	       :translation-axis (car translation-axis)
+	       :rotation-axis (car rotation-axis)
 	       ;;
 	       :dump-command nil
-	       :debug-view debug-view
+	       :debug-view t
+	       ;; :debug-view debug-view
 	       ;;:debug-view :no-message
 	       :warnp nil)
-	      args)))
+	      args))
+      )
      ;;
      (when collision-avoidance-link-pair
        (setq collision-avoidance-link-pair
